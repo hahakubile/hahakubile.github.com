@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Cpluscplus | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Cpluscplus | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/cpluscplus/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-01-24T02:52:50-05:00</updated>
+  <updated>2014-01-24T02:58:04-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[hahakubile]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
