@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Weka | My Octopress Blog]]></title>
+  <link href="http://hahakubile.github.io/blog/categories/weka/atom.xml" rel="self"/>
+  <link href="http://hahakubile.github.io/"/>
+  <updated>2014-01-24T02:52:50-05:00</updated>
+  <id>http://hahakubile.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Problem-Running Weka-Registering Weka Editors Error]]></title>
+    <link href="http://hahakubile.github.io/blog/2012/06/12/problem-running-weka-registering-weka-editors-error/"/>
+    <updated>2012-06-12T14:10:00-04:00</updated>
+    <id>http://hahakubile.github.io/blog/2012/06/12/problem-running-weka-registering-weka-editors-error</id>
+    <content type="html"><![CDATA[<h3>ubuntu下安装weka</h3>
+
+<pre><code>sudo apt-get install weka
+</code></pre>
+
+<h3>启动weka，控制台打印warning如下：</h3>
+
+<pre><code>---Registering Weka Editors---
+Trying to add JDBC driver: RmiJdbc.RJDriver - Error, not in CLASSPATH?
+Trying to add JDBC driver: jdbc.idbDriver - Error, not in CLASSPATH?
+Trying to add JDBC driver: org.gjt.mm.mysql.Driver - Error, not in CLASSPATH?
+Trying to add JDBC driver: com.mckoi.JDBCDriver - Error, not in CLASSPATH?
+Trying to add JDBC driver: org.hsqldb.jdbcDriver - Error, not in CLASSPATH?
+</code></pre>
+
+<h3>问题原因</h3>
+
+<blockquote><p>These are actually just warnings rather than true errors.
+The system has some default connection strings for various common databases and
+Weka does a quick check to see if the appropriate JDBC drivers are available to the system at startup.
+If you are not planning to connect to MySQL, Hypersonic, instantdb etc. then these messages can safely be ignored.</p></blockquote>
+
+<p>也就是说，这是weka的例行检查，如果不打算连接数据库，完全可以忽略这些warning信息。</p>
+
+<h3>解决办法</h3>
+
+<ul>
+<li>下载对应的jar包（上面这些都是用于连接不同数据库）</li>
+<li>修改/usr/bin/weka启动脚本，添加JAVA_CLASSPTH（也可添加在~/.bashrc中）</li>
+</ul>
+
+
+<h3>参考[1]、[2]、[3]</h3>
+
+<p><a href="http://www.cnblogs.com/luffylee/archive/2012/02/23/2365416.html">1</a>
+<a href="http://www.blogjava.net/honeybee/articles/193605.html">2</a>
+<a href="http://forums.pentaho.com/showthread.php?82144-quot-Trying-to-add-database-driver-quot-issue">3</a></p>
+]]></content>
+  </entry>
+  
+</feed>

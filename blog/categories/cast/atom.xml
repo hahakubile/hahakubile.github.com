@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cast | My Octopress Blog]]></title>
+  <link href="http://hahakubile.github.io/blog/categories/cast/atom.xml" rel="self"/>
+  <link href="http://hahakubile.github.io/"/>
+  <updated>2014-01-24T02:52:50-05:00</updated>
+  <id>http://hahakubile.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[About Static_cast]]></title>
+    <link href="http://hahakubile.github.io/blog/2012/06/25/about-static-cast/"/>
+    <updated>2012-06-25T14:06:00-04:00</updated>
+    <id>http://hahakubile.github.io/blog/2012/06/25/about-static-cast</id>
+    <content type="html"><![CDATA[<h3>static_cast</h3>
+
+<pre><code>static_cast&lt;type&gt; (object);
+</code></pre>
+
+<p>The static_cast operator can be used for operations such as:</p>
+
+<ul>
+<li>Converting a pointer of a base class to a pointer of a derived class,</li>
+<li>Convert numeric data types such as enums to ints or ints to floats.</li>
+</ul>
+
+
+<h3>示例</h3>
+
+<pre><code>int score = 1340;
+
+float scale = static_cast&lt;float&gt;(score) / MAX_SCORE + 1;
+
+// 如果这样呢？会有什么不同
+float scale = score / MAX_SCORE + 1;
+</code></pre>
+
+<p>需要注意的是，在基础类型转换时，并非进行四舍五入，而是直接舍去小数部分！</p>
+]]></content>
+  </entry>
+  
+</feed>

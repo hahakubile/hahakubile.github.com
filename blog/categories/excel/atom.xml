@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Excel | My Octopress Blog]]></title>
+  <link href="http://hahakubile.github.io/blog/categories/excel/atom.xml" rel="self"/>
+  <link href="http://hahakubile.github.io/"/>
+  <updated>2014-01-24T02:52:50-05:00</updated>
+  <id>http://hahakubile.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[About IronSpread]]></title>
+    <link href="http://hahakubile.github.io/blog/2012/06/11/about-ironspread/"/>
+    <updated>2012-06-11T10:04:00-04:00</updated>
+    <id>http://hahakubile.github.io/blog/2012/06/11/about-ironspread</id>
+    <content type="html"><![CDATA[<h3>IronSpread: Scripting Excel with Python</h3>
+
+<ul>
+<li>MIT的两名学生开发的Excel 2010 插件</li>
+<li>替代VBA</li>
+<li>允许用户在Excel中创建自动化的任务</li>
+</ul>
+
+
+<p>相比之前使用python的插件完成excel清理，也许这会是个方便的选择。</p>
+
+<p><a href="http://www.ironspread.com/quickstart.html">@QucikStart</a></p>
+]]></content>
+  </entry>
+  
+</feed>

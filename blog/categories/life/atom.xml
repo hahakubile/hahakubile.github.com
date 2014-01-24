@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Life | My Octopress Blog]]></title>
+  <link href="http://hahakubile.github.io/blog/categories/life/atom.xml" rel="self"/>
+  <link href="http://hahakubile.github.io/"/>
+  <updated>2014-01-24T02:52:50-05:00</updated>
+  <id>http://hahakubile.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[学而时习之，不亦乐乎]]></title>
+    <link href="http://hahakubile.github.io/blog/2012/06/08/xue-er-shi-xi-zhi-%2Cbu-yi-le-hu/"/>
+    <updated>2012-06-08T21:05:00-04:00</updated>
+    <id>http://hahakubile.github.io/blog/2012/06/08/xue-er-shi-xi-zhi-,bu-yi-le-hu</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>温故而知新</p></li>
+<li><p>学而时习之</p></li>
+<li><p>有朋自远方来</p></li>
+<li><p>会当凌绝顶</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

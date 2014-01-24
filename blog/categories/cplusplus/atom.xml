@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cplusplus | My Octopress Blog]]></title>
+  <link href="http://hahakubile.github.io/blog/categories/cplusplus/atom.xml" rel="self"/>
+  <link href="http://hahakubile.github.io/"/>
+  <updated>2014-01-24T02:52:50-05:00</updated>
+  <id>http://hahakubile.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[About Static_cast]]></title>
+    <link href="http://hahakubile.github.io/blog/2012/06/25/about-static-cast/"/>
+    <updated>2012-06-25T14:06:00-04:00</updated>
+    <id>http://hahakubile.github.io/blog/2012/06/25/about-static-cast</id>
+    <content type="html"><![CDATA[<h3>static_cast</h3>
+
+<pre><code>static_cast&lt;type&gt; (object);
+</code></pre>
+
+<p>The static_cast operator can be used for operations such as:</p>
+
+<ul>
+<li>Converting a pointer of a base class to a pointer of a derived class,</li>
+<li>Convert numeric data types such as enums to ints or ints to floats.</li>
+</ul>
+
+
+<h3>示例</h3>
+
+<pre><code>int score = 1340;
+
+float scale = static_cast&lt;float&gt;(score) / MAX_SCORE + 1;
+
+// 如果这样呢？会有什么不同
+float scale = score / MAX_SCORE + 1;
+</code></pre>
+
+<p>需要注意的是，在基础类型转换时，并非进行四舍五入，而是直接舍去小数部分！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Avoid Assigning Negative Numbers to Unsigned Int|short]]></title>
+    <link href="http://hahakubile.github.io/blog/2012/06/25/avoid-assigning-negative-numbers-to-unsigned-short/"/>
+    <updated>2012-06-25T11:57:00-04:00</updated>
+    <id>http://hahakubile.github.io/blog/2012/06/25/avoid-assigning-negative-numbers-to-unsigned-short</id>
+    <content type="html"><![CDATA[<h3>问题</h3>
+
+<pre><code>// 定义了一个int变量i，i存在为负数的情况
+int i = -1; 
+// 又定义了一个unsigned short or int的变量j
+unsigned short j;
+// 如果把i的值赋给j
+j = i; 
+
+// 会发生什么？j为65535
+std::cout &lt;&lt; j &lt;&lt; std::endl;
+</code></pre>
+
+<h3>结论</h3>
+
+<p>这是一个简单的赋值，但由于前后未注意，导致这种bug发生，试想如果后面使用下面语句进行判断的话：</p>
+
+<pre><code>if(j &gt; 0) {
+  // 这里，j本应该是-1，但由于65535&gt;0，导致错误
+}
+</code></pre>
+
+<p>看到一句很有意思的话，You&rsquo;re lying to the compiler.</p>
+]]></content>
+  </entry>
+  
+</feed>

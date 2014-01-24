@@ -1,6 +1,52 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://hahakubile.github.io/blog/2012/06/08/xue-er-shi-xi-zhi-%2Cbu-yi-le-hu/</loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hahakubile.github.io/blog/2012/06/11/about-ironspread/</loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hahakubile.github.io/blog/2012/06/11/problem-ssh-permissions-denied-this-private-key-are-too-open/
+        </loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hahakubile.github.io/blog/2012/06/12/problem-running-weka-registering-weka-editors-error/
+        </loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hahakubile.github.io/blog/2012/06/16/select-all-columns-except-some-in-mysql/
+        </loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hahakubile.github.io/blog/2012/06/25/avoid-assigning-negative-numbers-to-unsigned-short/
+        </loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hahakubile.github.io/blog/2012/06/25/about-static-cast/</loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hahakubile.github.io/blog/2012/06/29/problem-printf-std-string/</loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hahakubile.github.io/blog/2012/07/04/introduction-optimizing-search-engines-using-clickthrough-data/
+        </loc>
+        <lastmod>2014-01-24T02:36:25-05:00</lastmod>
+    </url>
+    <url>
         <loc>http://hahakubile.github.io/</loc>
         <lastmod>2014-01-24T02:36:25-05:00</lastmod>
     </url>

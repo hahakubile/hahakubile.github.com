@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mysql | My Octopress Blog]]></title>
+  <link href="http://hahakubile.github.io/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://hahakubile.github.io/"/>
+  <updated>2014-01-24T02:52:50-05:00</updated>
+  <id>http://hahakubile.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Select All Columns Except Some in MySQL]]></title>
+    <link href="http://hahakubile.github.io/blog/2012/06/16/select-all-columns-except-some-in-mysql/"/>
+    <updated>2012-06-16T13:58:00-04:00</updated>
+    <id>http://hahakubile.github.io/blog/2012/06/16/select-all-columns-except-some-in-mysql</id>
+    <content type="html"><![CDATA[<h3>问题</h3>
+
+<p>如果一个表有多列，要想不查询指定列（其余列都要），该如何实现？</p>
+
+<p>在stackoverflow上有类似的问题，<a href="http://stackoverflow.com/questions/9122/select-all-columns-except-one-in-mysql/11060861#11060861">Select all columns except one in MySQL?</a></p>
+
+<h3>实现</h3>
+
+<pre><code>SET @database    = 'database_name';
+SET @tablename   = 'table_name';
+SET @cols2delete = 'col1,col2,col3';
+
+#If you do have a lots of cols, use this sql to change group_concat_max_len
+SET @@group_concat_max_len = 2048;  
+
+SET @sql = CONCAT(
+'SELECT ', 
+(
+    SELECT GROUP_CONCAT( IF(FIND_IN_SET(COLUMN_NAME, @cols2delete), NULL, COLUMN_NAME ) )
+    FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @tablename AND TABLE_SCHEMA = @database
+), 
+' FROM ',
+@tablename);
+
+SELECT @sql;
+
+PREPARE stmt1 FROM @sql;
+EXECUTE stmt1;
+</code></pre>
+
+<h3>说明</h3>
+
+<p>涉及到以下内容：</p>
+
+<ul>
+<li>从INFORMATION_SCHEMA.COLUMNS表中获取COLUMNS名称</li>
+<li>GROUP_CONCAT拼接在一起</li>
+<li>FIND_IN_SET判断是否在排除的列当中</li>
+<li>IF语句使用</li>
+<li>Mysql prepare&hellip;execute用法</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
