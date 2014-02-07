@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-06T21:51:33-05:00</updated>
+  <updated>2014-02-06T21:55:03-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -18,16 +18,15 @@
     <link href="http://hahakubile.github.io/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install/"/>
     <updated>2014-02-06T21:42:00-05:00</updated>
     <id>http://hahakubile.github.io/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install</id>
-    <content type="html"><![CDATA[<h1>Python 2.7.5</h1>
+    <content type="html"><![CDATA[<h2>Python 2.7.5</h2>
 
-<h2>System support</h2>
+<h3>System support</h3>
 
 <p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support</p>
 
 <ol>
-<li><p>Compression requires the (missing) zlib module</p>
-
-<p> yum -y install zlib zlib-devel</p></li>
+<li><p>Compression requires the (missing) zlib module
+ <code>yum -y install zlib zlib-devel</code></p></li>
 <li><p>unknown url type: https &mdash; Some packages may not be found!</p>
 
 <p> yum -y install openssl openssl-devel</p></li>
