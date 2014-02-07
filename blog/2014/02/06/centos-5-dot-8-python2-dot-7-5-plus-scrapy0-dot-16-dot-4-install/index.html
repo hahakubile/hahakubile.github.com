@@ -131,6 +131,27 @@ make && make altinstall
 <p><code>export PATH="/usr/local/bin:$PATH"</code><br/>
 or you can(recommended):
 <code>echo "export PATH=\"/usr/local/bin:\$PATH\"" &gt;&gt; /etc/profile &amp;&amp; source /etc/profile</code></p>
+
+<h3>2.3 check python command</h3>
+
+<p>python2.7 -c &ldquo;import sys; print sys.version&rdquo;</p>
+
+<h3>2.4 install setuptools</h3>
+
+<pre><code>
+wget --no-check-certificate https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz -P /opt
+tar xvf setuptools-1.4.2.tar.gz
+cd setuptools-1.4.2
+# Be careful, python2.7 here
+python2.7 setup.py install
+</pre>
+
+
+<p></code></p>
+
+<h3>2.5 install pip</h3>
+
+<p><code>curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python2.7 -</code></p>
 </div>
 
 

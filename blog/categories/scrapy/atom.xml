@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scrapy | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/scrapy/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-06T22:12:16-05:00</updated>
+  <updated>2014-02-06T22:37:31-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -58,6 +58,27 @@ make && make altinstall
 <p><code>export PATH="/usr/local/bin:$PATH"</code><br/>
 or you can(recommended):
 <code>echo "export PATH=\"/usr/local/bin:\$PATH\"" &gt;&gt; /etc/profile &amp;&amp; source /etc/profile</code></p>
+
+<h3>2.3 check python command</h3>
+
+<p>python2.7 -c &ldquo;import sys; print sys.version&rdquo;</p>
+
+<h3>2.4 install setuptools</h3>
+
+<pre><code>
+wget --no-check-certificate https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz -P /opt
+tar xvf setuptools-1.4.2.tar.gz
+cd setuptools-1.4.2
+# Be careful, python2.7 here
+python2.7 setup.py install
+</pre>
+
+
+<p></code></p>
+
+<h3>2.5 install pip</h3>
+
+<p><code>curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python2.7 -</code></p>
 ]]></content>
   </entry>
   
