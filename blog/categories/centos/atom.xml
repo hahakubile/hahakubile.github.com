@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Centos | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-06T23:52:00-05:00</updated>
+  <updated>2014-02-07T00:00:28-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -103,6 +103,25 @@ python2.7 setup.py install
 <code>pip install pyOpenSSL==0.12</code></p>
 
 <p><code>pip install Scrapy==0.16.4</code></p>
+
+<h2>4. Optional: Redis/Hiredis/MySQL-Python/SQLAlchemy/PIL/DBUtils</h2>
+
+<pre><code>
+pip install redis hiredis
+
+yum install mysql-devel
+pip install MySQL-python
+
+pip install SQLAlchemy
+
+pip install Imaging
+
+pip install DBUtils
+
+</pre>
+
+
+<p></code></p>
 ]]></content>
   </entry>
   
