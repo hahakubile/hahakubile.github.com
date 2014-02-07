@@ -9,8 +9,7 @@
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="基本 Relevant docs high, less relevant docs below
-training dat ">
+  <meta name="description" content="Python 2.7.5 System support Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support Compression requires the (missing) zlib &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,56 @@ training dat ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install/">Centos 5.8: python2.7.5 + scrapy0.16.4 Install</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-06T21:42:00-05:00" pubdate data-updated="true">Feb 6<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Python 2.7.5</h1>
+
+<h2>System support</h2>
+
+<p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support</p>
+
+<ol>
+<li>Compression requires the (missing) zlib module
+ yum -y install zlib zlib-devel</li>
+<li>unknown url type: https &mdash; Some packages may not be found!
+ yum -y install openssl openssl-devel</li>
+<li>python -c &ldquo;import bz2; print bz2.<strong>doc</strong>&rdquo; ==> CompressionError: bz2 module is not available
+ yum -y install bzip2 bzip2-devel</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -616,6 +665,10 @@ chmod 700 id_rsa
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install/">Centos 5.8: python2.7.5 + scrapy0.16.4 Install</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/07/04/introduction-optimizing-search-engines-using-clickthrough-data/">Introduction-Optimizing Search Engines Using Clickthrough Data</a>
       </li>
     
@@ -629,10 +682,6 @@ chmod 700 id_rsa
     
       <li class="post">
         <a href="/blog/2012/06/25/avoid-assigning-negative-numbers-to-unsigned-short/">Avoid Assigning Negative Numbers to Unsigned Int|short</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/16/select-all-columns-except-some-in-mysql/">Select All Columns Except Some in MySQL</a>
       </li>
     
   </ul>
