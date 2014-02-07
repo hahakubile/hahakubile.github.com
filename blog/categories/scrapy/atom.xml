@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scrapy | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/scrapy/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-06T22:01:19-05:00</updated>
+  <updated>2014-02-06T22:08:18-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -18,32 +18,31 @@
     <link href="http://hahakubile.github.io/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install/"/>
     <updated>2014-02-06T21:42:00-05:00</updated>
     <id>http://hahakubile.github.io/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install</id>
-    <content type="html"><![CDATA[<h2>1. Python 2.7.5</h2>
+    <content type="html"><![CDATA[<h2>1. System support</h2>
 
-<h3>1.1 System support</h3>
+<p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support
+* Compression requires the (missing) zlib module</p>
 
-<p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support</p>
+<pre><code>`yum -y install zlib zlib-devel`
+</code></pre>
 
 <ul>
-<li><p>Compression requires the (missing) zlib module</p>
-
-<p>  <code>yum -y install zlib zlib-devel</code></p></li>
-<li><p>unknown url type: https &mdash; Some packages may not be found!</p>
-
-<p>  <code>yum -y install openssl openssl-devel</code></p></li>
-<li><p>python -c &ldquo;import bz2; print bz2.<strong>doc</strong>&rdquo; ==> CompressionError: bz2 module is not available</p>
-
-<p>  <code>yum -y install bzip2 bzip2-devel</code></p></li>
+<li>unknown url type: https &mdash; Some packages may not be found!
+  <code>yum -y install openssl openssl-devel</code></li>
+<li>python -c &ldquo;import bz2; print bz2.<strong>doc</strong>&rdquo; ==> CompressionError: bz2 module is not available
+  <code>yum -y install bzip2 bzip2-devel</code></li>
 </ul>
 
 
-<h3>1.2 Install Python</h3>
+<h2>2. Install Python 2.7.5</h2>
 
-<p>When you are with CentOS 5.*, you will see that Python is at version 2.4.3, it is reserved for system&rsquo;s use.
-Next we are going to install Python 2.7.5 without breaking the system&rsquo;s default.
-It is rather important to not to get involved with that as critical system tools such as YUM depend on it.</p>
+<p>When you are with CentOS 5.*, you will see that Python is at version 2.4.3, it is reserved for system&rsquo;s use.</p>
 
-<h4>1.2.1 download &amp; install</h4>
+<p>Next we are going to install Python 2.7.5 without breaking the system&rsquo;s default.</p>
+
+<p>It is rather important to not to get involved with that as critical system tools such as YUM depend on it.</p>
+
+<h3>2.1 download &amp; install</h3>
 
 <pre><code>
 wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz -P /opt
@@ -57,6 +56,14 @@ make && make altinstall
 
 
 <p></code></p>
+
+<h3>2.2 Adding New Python Installation Location to $PATH</h3>
+
+<p><code>export PATH="/usr/local/bin:$PATH"</code></p>
+
+<p>or you can(recommended):</p>
+
+<p><code>echo "export PATH=\"/usr/local/bin:\$PATH\"" &gt;&gt; /etc/profile &amp;&amp; source /etc/profile</code></p>
 ]]></content>
   </entry>
   
