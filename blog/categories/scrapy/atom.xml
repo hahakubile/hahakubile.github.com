@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scrapy | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/scrapy/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-06T22:37:31-05:00</updated>
+  <updated>2014-02-06T22:45:48-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -61,7 +61,7 @@ or you can(recommended):
 
 <h3>2.3 check python command</h3>
 
-<p>python2.7 -c &ldquo;import sys; print sys.version&rdquo;</p>
+<p><code>python2.7 -c "import sys; print sys.version"</code></p>
 
 <h3>2.4 install setuptools</h3>
 
@@ -79,6 +79,10 @@ python2.7 setup.py install
 <h3>2.5 install pip</h3>
 
 <p><code>curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python2.7 -</code></p>
+
+<h2>3. Scrapy install[<a href="http://doc.scrapy.org/en/latest/intro/install.html">http://doc.scrapy.org/en/latest/intro/install.html</a>]</h2>
+
+<p><code>pip install Scrapy==0.16.4</code></p>
 ]]></content>
   </entry>
   
