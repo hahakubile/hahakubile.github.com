@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scrapy | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/scrapy/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-06T23:48:36-05:00</updated>
+  <updated>2014-02-06T23:50:31-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -100,8 +100,9 @@ python2.7 setup.py install
 <h3>3.3 scrapy</h3>
 
 <p>@see <a href="http://stackoverflow.com/questions/7340784/easy-install-pyopenssl-error">http://stackoverflow.com/questions/7340784/easy-install-pyopenssl-error</a>
-<code>pip install pyOpenSSL==0.12</code>
-<code>pip install Scrapy==0.16.4</code></p>
+<code>pip install pyOpenSSL==0.12</code></p>
+
+<p><code>pip install Scrapy==0.16.4</code></p>
 ]]></content>
   </entry>
   
