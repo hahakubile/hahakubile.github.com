@@ -98,14 +98,15 @@
 <p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support</p>
 
 <ol>
-<li><p>Compression requires the (missing) zlib module
- <code>yum -y install zlib zlib-devel</code></p></li>
+<li><p>Compression requires the (missing) zlib module</p>
+
+<p> <code>yum -y install zlib zlib-devel</code></p></li>
 <li><p>unknown url type: https &mdash; Some packages may not be found!</p>
 
-<p> yum -y install openssl openssl-devel</p></li>
+<p> <code>yum -y install openssl openssl-devel</code></p></li>
 <li><p>python -c &ldquo;import bz2; print bz2.<strong>doc</strong>&rdquo; ==> CompressionError: bz2 module is not available</p>
 
-<p> yum -y install bzip2 bzip2-devel</p></li>
+<p> <code>yum -y install bzip2 bzip2-devel</code></p></li>
 </ol>
 
 </div>
