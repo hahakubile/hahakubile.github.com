@@ -9,8 +9,7 @@
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="1. System support Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support
-* Compression requires the (missing) zlib module &hellip;">
+  <meta name="description" content="1. System support Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support Compression requires the (missing) zlib module &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,13 +96,11 @@
 
   <div class="entry-content"><h2>1. System support</h2>
 
-<p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support
-* Compression requires the (missing) zlib module</p>
-
-<pre><code>`yum -y install zlib zlib-devel`
-</code></pre>
+<p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support</p>
 
 <ul>
+<li>Compression requires the (missing) zlib module
+  <code>yum -y install zlib zlib-devel</code></li>
 <li>unknown url type: https &mdash; Some packages may not be found!
   <code>yum -y install openssl openssl-devel</code></li>
 <li>python -c &ldquo;import bz2; print bz2.<strong>doc</strong>&rdquo; ==> CompressionError: bz2 module is not available
@@ -113,11 +110,9 @@
 
 <h2>2. Install Python 2.7.5</h2>
 
-<p>When you are with CentOS 5.*, you will see that Python is at version 2.4.3, it is reserved for system&rsquo;s use.</p>
-
-<p>Next we are going to install Python 2.7.5 without breaking the system&rsquo;s default.</p>
-
-<p>It is rather important to not to get involved with that as critical system tools such as YUM depend on it.</p>
+<p>When you are with CentOS 5.*, you will see that Python is at version 2.4.3, it is reserved for system&rsquo;s use.
+Next we are going to install Python 2.7.5 without breaking the system&rsquo;s default.
+It is rather important to not to get involved with that as critical system tools such as YUM depend on it.</p>
 
 <h3>2.1 download &amp; install</h3>
 
@@ -136,11 +131,9 @@ make && make altinstall
 
 <h3>2.2 Adding New Python Installation Location to $PATH</h3>
 
-<p><code>export PATH="/usr/local/bin:$PATH"</code></p>
-
-<p>or you can(recommended):</p>
-
-<p><code>echo "export PATH=\"/usr/local/bin:\$PATH\"" &gt;&gt; /etc/profile &amp;&amp; source /etc/profile</code></p>
+<p><code>export PATH="/usr/local/bin:$PATH"</code>
+or you can(recommended):
+<code>echo "export PATH=\"/usr/local/bin:\$PATH\"" &gt;&gt; /etc/profile &amp;&amp; source /etc/profile</code></p>
 </div>
   
   
