@@ -96,7 +96,7 @@
 <p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support</p>
 
 <ul>
-<li>Compression requires the (missing) zlib module
+<li>Compression requires the (missing) zlib module<br/>
   <code>yum -y install zlib zlib-devel</code></li>
 <li>unknown url type: https &mdash; Some packages may not be found!
   <code>yum -y install openssl openssl-devel</code></li>
@@ -128,7 +128,7 @@ make && make altinstall
 
 <h3>2.2 Adding New Python Installation Location to $PATH</h3>
 
-<p><code>export PATH="/usr/local/bin:$PATH"</code>
+<p><code>export PATH="/usr/local/bin:$PATH"</code><br/>
 or you can(recommended):
 <code>echo "export PATH=\"/usr/local/bin:\$PATH\"" &gt;&gt; /etc/profile &amp;&amp; source /etc/profile</code></p>
 </div>
