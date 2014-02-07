@@ -9,7 +9,7 @@
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="Python 2.7.5 System support Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support Compression requires the (missing) zlib &hellip;">
+  <meta name="description" content="1. Python 2.7.5 1.1 System support Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support Compression requires the ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,24 +91,45 @@
   </header>
 
 
-<div class="entry-content"><h2>Python 2.7.5</h2>
+<div class="entry-content"><h2>1. Python 2.7.5</h2>
 
-<h3>System support</h3>
+<h3>1.1 System support</h3>
 
 <p>Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support</p>
 
-<ol>
+<ul>
 <li><p>Compression requires the (missing) zlib module</p>
 
-<p> <code>yum -y install zlib zlib-devel</code></p></li>
+<p>  <code>yum -y install zlib zlib-devel</code></p></li>
 <li><p>unknown url type: https &mdash; Some packages may not be found!</p>
 
-<p> <code>yum -y install openssl openssl-devel</code></p></li>
+<p>  <code>yum -y install openssl openssl-devel</code></p></li>
 <li><p>python -c &ldquo;import bz2; print bz2.<strong>doc</strong>&rdquo; ==> CompressionError: bz2 module is not available</p>
 
-<p> <code>yum -y install bzip2 bzip2-devel</code></p></li>
-</ol>
+<p>  <code>yum -y install bzip2 bzip2-devel</code></p></li>
+</ul>
 
+
+<h3>1.2 Install Python</h3>
+
+<p>When you are with CentOS 5.*, you will see that Python is at version 2.4.3, it is reserved for system&rsquo;s use.
+Next we are going to install Python 2.7.5 without breaking the system&rsquo;s default.
+It is rather important to not to get involved with that as critical system tools such as YUM depend on it.</p>
+
+<h4>1.2.1 download &amp; install</h4>
+
+<pre><code>
+wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz -P /opt
+cd /opt
+tar xvf Python-2.7.5.tgz
+cd Python-2.7.5
+./configure --prefix=/usr/local
+# make altinstall is used to prevent replacing the default python binary file /usr/bin/python
+make && make altinstall
+</pre>
+
+
+<p></code></p>
 </div>
 
 
