@@ -143,9 +143,10 @@ If you had done everything correctly, you should now see a value returns as 1228
 <p>To confirm, you can go to any CM-managed node, <code>ps -ef | grep hdfs</code>, grab the pid of a hdfs process.
 <code>cat /proc/&lt;pid&gt;/fd</code> to make sure it&rsquo;s sticking.</p>
 
-<p>Limit                     Soft Limit           Hard Limit           Units   <br/>
-Max processes             65536                65536                processes
-Max open files            122880               122880               files</p>
+<pre><code>Limit                     Soft Limit           Hard Limit           Units     
+Max processes             65536                65536                processes 
+Max open files            122880               122880               files 
+</code></pre>
 </div>
 
 

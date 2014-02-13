@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cdh3u6 | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/cdh3u6/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-13T03:46:11-05:00</updated>
+  <updated>2014-02-13T03:47:55-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -70,9 +70,10 @@ If you had done everything correctly, you should now see a value returns as 1228
 <p>To confirm, you can go to any CM-managed node, <code>ps -ef | grep hdfs</code>, grab the pid of a hdfs process.
 <code>cat /proc/&lt;pid&gt;/fd</code> to make sure it&rsquo;s sticking.</p>
 
-<p>Limit                     Soft Limit           Hard Limit           Units   <br/>
-Max processes             65536                65536                processes
-Max open files            122880               122880               files</p>
+<pre><code>Limit                     Soft Limit           Hard Limit           Units     
+Max processes             65536                65536                processes 
+Max open files            122880               122880               files 
+</code></pre>
 ]]></content>
   </entry>
   
