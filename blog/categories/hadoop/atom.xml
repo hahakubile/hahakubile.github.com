@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Hadoop | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/hadoop/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-13T03:23:17-05:00</updated>
+  <updated>2014-02-13T03:46:11-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -52,6 +52,27 @@ java.net.SocketException: Too many open files
 If you had done everything correctly, you should now see a value returns as 122880.</li>
 </ol>
 
+
+<h2>CM users</h2>
+
+<p>For CM users, since there&rsquo;s a supervisor in effect that monitors the launched daemons, the ulimits are inherited from it and are hence pre-set in <code>/usr/sbin/cmf-agent</code> (look for lines that start with &ldquo;ulimit&rdquo;.</p>
+
+<ol>
+<li>Edit /usr/sbin/cmf-agent and change the ulimit -n setting.</li>
+<li>shutdown hdfs/mapreduce/hbase services on them.</li>
+<li>On these stopped nodes run: <code>service cloudera-scm-agent hard_restart</code></li>
+<li>Restart the services.</li>
+</ol>
+
+
+<h2>How to confirm</h2>
+
+<p>To confirm, you can go to any CM-managed node, <code>ps -ef | grep hdfs</code>, grab the pid of a hdfs process.
+<code>cat /proc/&lt;pid&gt;/fd</code> to make sure it&rsquo;s sticking.</p>
+
+<p>Limit                     Soft Limit           Hard Limit           Units   <br/>
+Max processes             65536                65536                processes
+Max open files            122880               122880               files</p>
 ]]></content>
   </entry>
   
