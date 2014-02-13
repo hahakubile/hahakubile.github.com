@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Problem-SSH Permissions Denied: This Private Key Are Too Open - hahakubile Blog</title>
+  <title>Configuring Ulimit for HBase in Cloudera Cdh3u6 - hahakubile Blog</title>
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="问题: $ ssh -T git@github.com @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@ WARNING: UNPROTECTED PRIVATE KEY FILE &hellip;">
+  <meta name="description" content="Error in hbase regionserver log 2014-02-13 11:38:13,028 INFO org.apache.hadoop.hdfs.DFSClient: Failed to connect to /192.168.101.21:50010, add to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hahakubile.github.io/blog/2012/06/11/problem-ssh-permissions-denied-this-private-key-are-too-open">
+  <link rel="canonical" href="http://hahakubile.github.io/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="hahakubile Blog" type="application/atom+xml">
@@ -69,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Problem-SSH Permissions Denied: This Private Key Are Too Open</h1>
+      <h1 class="entry-title">Configuring Ulimit for HBase in Cloudera Cdh3u6</h1>
     
     
       <p class="meta">
@@ -85,33 +84,47 @@
   
 
 
-<time datetime="2012-06-11T10:32:00-04:00" pubdate data-updated="true">Jun 11<span>th</span>, 2012</time>
+<time datetime="2014-02-13T02:57:04-05:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h3>问题:</h3>
+<div class="entry-content"><h2>Error in hbase regionserver log</h2>
 
-<pre><code>$ ssh -T git@github.com     
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-Permissions 0766 for '***/.ssh/id_rsa' are too open.
-It is recommended that your private key files are NOT accessible by others.
-This private key will be ignored.
-bad permissions: ignore key: ***/.ssh/id_rsa
-Permission denied (publickey).
+<pre><code>2014-02-13 11:38:13,028 INFO org.apache.hadoop.hdfs.DFSClient: Failed to connect to /192.168.101.21:50010, add to deadNodes and continue
+java.net.SocketException: Too many open files
 </code></pre>
 
-<h3>解决方法:</h3>
+<h2>About ulimit</h2>
 
-<pre><code>cd ~/.ssh
-chmod 700 id_rsa
-</code></pre>
+<p><a href="http://hbase.apache.org/book.html#ulimit">http://hbase.apache.org/book.html#ulimit</a></p>
 
-<h3>参考：<a href="http://stackoverflow.com/questions/1556119/ssh-private-key-permissions-using-git-gui-or-ssh-keygen-are-too-open">1</a>、<a href="http://www.thinkplexx.com/learn/howto/security/ssh/fix-permissions-are-too-open-private-key-will-be-ignored">2</a></h3>
+<p>To be clear, upping the file descriptors and nproc for the user who is running the HBase process is an operating system configuration, not an HBase configuration.</p>
+
+<h2><a href="http://essayboard.com/2011/05/28/raising-ulimit-on-centos-server/">Raising ulimit on centos-server</a></h2>
+
+<h3>fs.file-max</h3>
+
+<ol>
+<li><code>vim /etc/sysctl.conf</code></li>
+<li>Add this line <code>fs.file-max = 122880</code> into <code>/etc/sysctl.conf</code></li>
+<li>You can execute the command <code>sysctl -p</code> or reboot to permanently add the kernel parameter above
+
+<h3>ulimit</h3></li>
+<li><code>vim /etc/security/limits.conf</code></li>
+<li>Add the lines below:
+
+<ul>
+<li>soft nofile 122880</li>
+<li>hard nofile 122880</li>
+</ul>
+</li>
+<li>logout and login, execute the command <code>ulimit -n</code> inside your terminal.
+If you had done everything correctly, you should now see a value returns as 122880.</li>
+</ol>
+
 </div>
 
 
@@ -134,12 +147,12 @@ chmod 700 id_rsa
   
 
 
-<time datetime="2012-06-11T10:32:00-04:00" pubdate data-updated="true">Jun 11<span>th</span>, 2012</time>
+<time datetime="2014-02-13T02:57:04-05:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/github/'>github</a>, <a class='category' href='/blog/categories/id-rsa/'>id_rsa</a>, <a class='category' href='/blog/categories/problem/'>problem</a>, <a class='category' href='/blog/categories/tech/'>tech</a>
+    <a class='category' href='/blog/categories/cdh3u6/'>cdh3u6</a>, <a class='category' href='/blog/categories/cloudera/'>cloudera</a>, <a class='category' href='/blog/categories/hadoop/'>hadoop</a>, <a class='category' href='/blog/categories/ulimit/'>ulimit</a>
   
 </span>
 
@@ -148,7 +161,7 @@ chmod 700 id_rsa
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hahakubile.github.io/blog/2012/06/11/problem-ssh-permissions-denied-this-private-key-are-too-open/" data-via="" data-counturl="http://hahakubile.github.io/blog/2012/06/11/problem-ssh-permissions-denied-this-private-key-are-too-open/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hahakubile.github.io/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6/" data-via="" data-counturl="http://hahakubile.github.io/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6/" >Tweet</a>
   
   
   
@@ -157,10 +170,8 @@ chmod 700 id_rsa
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/06/11/about-ironspread/" title="Previous Post: About IronSpread">&laquo; About IronSpread</a>
+        <a class="basic-alignment left" href="/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install/" title="Previous Post: centos 5.8: python2.7.5 + scrapy0.16.4 install">&laquo; centos 5.8: python2.7.5 + scrapy0.16.4 install</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/06/12/problem-running-weka-registering-weka-editors-error/" title="Next Post: Problem-Running Weka-Registering Weka Editors Error">Problem-Running Weka-Registering Weka Editors Error &raquo;</a>
       
     </p>
   </footer>

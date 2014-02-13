@@ -9,7 +9,7 @@
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="1. System support Before you install python 2.7 in centos 5.*, first check https/zlib/bzip2 support Compression requires the (missing) zlib module &hellip;">
+  <meta name="description" content="Error in hbase regionserver log 2014-02-13 11:38:13,028 INFO org.apache.hadoop.hdfs.DFSClient: Failed to connect to /192.168.101.21:50010, add to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,75 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6/">Configuring Ulimit for HBase in Cloudera Cdh3u6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-13T02:57:04-05:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Error in hbase regionserver log</h2>
+
+<pre><code>2014-02-13 11:38:13,028 INFO org.apache.hadoop.hdfs.DFSClient: Failed to connect to /192.168.101.21:50010, add to deadNodes and continue
+java.net.SocketException: Too many open files
+</code></pre>
+
+<h2>About ulimit</h2>
+
+<p><a href="http://hbase.apache.org/book.html#ulimit">http://hbase.apache.org/book.html#ulimit</a></p>
+
+<p>To be clear, upping the file descriptors and nproc for the user who is running the HBase process is an operating system configuration, not an HBase configuration.</p>
+
+<h2><a href="http://essayboard.com/2011/05/28/raising-ulimit-on-centos-server/">Raising ulimit on centos-server</a></h2>
+
+<h3>fs.file-max</h3>
+
+<ol>
+<li><code>vim /etc/sysctl.conf</code></li>
+<li>Add this line <code>fs.file-max = 122880</code> into <code>/etc/sysctl.conf</code></li>
+<li>You can execute the command <code>sysctl -p</code> or reboot to permanently add the kernel parameter above
+
+<h3>ulimit</h3></li>
+<li><code>vim /etc/security/limits.conf</code></li>
+<li>Add the lines below:
+
+<ul>
+<li>soft nofile 122880</li>
+<li>hard nofile 122880</li>
+</ul>
+</li>
+<li>logout and login, execute the command <code>ulimit -n</code> inside your terminal.
+If you had done everything correctly, you should now see a value returns as 122880.</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -700,49 +769,9 @@ chmod 700 id_rsa
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/08/xue-er-shi-xi-zhi-%2Cbu-yi-le-hu/">学而时习之，不亦乐乎</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-08T21:05:00-04:00" pubdate data-updated="true">Jun 8<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li><p>温故而知新</p></li>
-<li><p>学而时习之</p></li>
-<li><p>有朋自远方来</p></li>
-<li><p>会当凌绝顶</p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -753,6 +782,10 @@ chmod 700 id_rsa
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6/">Configuring Ulimit for HBase in Cloudera Cdh3u6</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install/">Centos 5.8: python2.7.5 + scrapy0.16.4 Install</a>
@@ -768,10 +801,6 @@ chmod 700 id_rsa
     
       <li class="post">
         <a href="/blog/2012/06/25/about-static-cast/">About Static_cast</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/25/avoid-assigning-negative-numbers-to-unsigned-short/">Avoid Assigning Negative Numbers to Unsigned Int|short</a>
       </li>
     
   </ul>

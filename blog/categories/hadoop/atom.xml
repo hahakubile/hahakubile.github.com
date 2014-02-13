@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Hadoop | hahakubile Blog]]></title>
+  <link href="http://hahakubile.github.io/blog/categories/hadoop/atom.xml" rel="self"/>
+  <link href="http://hahakubile.github.io/"/>
+  <updated>2014-02-13T03:23:17-05:00</updated>
+  <id>http://hahakubile.github.io/</id>
+  <author>
+    <name><![CDATA[hahakubile]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Configuring Ulimit for HBase in Cloudera Cdh3u6]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6/"/>
+    <updated>2014-02-13T02:57:04-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6</id>
+    <content type="html"><![CDATA[<h2>Error in hbase regionserver log</h2>
+
+<pre><code>2014-02-13 11:38:13,028 INFO org.apache.hadoop.hdfs.DFSClient: Failed to connect to /192.168.101.21:50010, add to deadNodes and continue
+java.net.SocketException: Too many open files
+</code></pre>
+
+<h2>About ulimit</h2>
+
+<p><a href="http://hbase.apache.org/book.html#ulimit">http://hbase.apache.org/book.html#ulimit</a></p>
+
+<p>To be clear, upping the file descriptors and nproc for the user who is running the HBase process is an operating system configuration, not an HBase configuration.</p>
+
+<h2><a href="http://essayboard.com/2011/05/28/raising-ulimit-on-centos-server/">Raising ulimit on centos-server</a></h2>
+
+<h3>fs.file-max</h3>
+
+<ol>
+<li><code>vim /etc/sysctl.conf</code></li>
+<li>Add this line <code>fs.file-max = 122880</code> into <code>/etc/sysctl.conf</code></li>
+<li>You can execute the command <code>sysctl -p</code> or reboot to permanently add the kernel parameter above
+
+<h3>ulimit</h3></li>
+<li><code>vim /etc/security/limits.conf</code></li>
+<li>Add the lines below:
+
+<ul>
+<li>soft nofile 122880</li>
+<li>hard nofile 122880</li>
+</ul>
+</li>
+<li>logout and login, execute the command <code>ulimit -n</code> inside your terminal.
+If you had done everything correctly, you should now see a value returns as 122880.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>
