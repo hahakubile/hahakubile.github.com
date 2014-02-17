@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Life - hahakubile Blog</title>
+  <title>How to Compile Sqoop With Specified Hadoop Version - hahakubile Blog</title>
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="Category: life">
+  <meta name="description" content="command To compile Sqoop, run ant package. There will be a fully self-hosted build provided in the build/sqoop-(version)/ directory.
+You can build &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hahakubile.github.ioblog/categories/life">
+  <link rel="canonical" href="http://hahakubile.github.io/blog/2014/02/17/how-to-compile-sqoop-with-specified-hadoop-version">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="hahakubile Blog" type="application/atom+xml">
@@ -64,35 +65,128 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Life</h1>
+    
+      <h1 class="entry-title">How to Compile Sqoop With Specified Hadoop Version</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-17T01:11:17-05:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h2>command</h2>
 
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/06/08/xue-er-shi-xi-zhi-%2Cbu-yi-le-hu/">学而时习之，不亦乐乎</a></h1>
-<time datetime="2012-06-08T21:05:00-04:00" pubdate><span class='month'>Jun</span> <span class='day'>08</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/life/'>life</a>, <a class='category' href='/blog/categories/sheng-huo-sui-bi/'>生活随笔</a></span>
-</footer>
+<ul>
+<li>To compile Sqoop, run <code>ant package</code>. There will be a fully self-hosted build provided in the <code>build/sqoop-(version)/</code> directory.</li>
+<li>You can build just the jar by running <code>ant jar</code>.</li>
+<li>You can specify the <code>hadoopversion</code>, <code>ant -Dhadoopversion=20 package</code></li>
+</ul>
 
 
-</article>
+<h2>hadoopversion</h2>
 
+<p><a href="https://github.com/apache/sqoop/blob/trunk/build.xml">hadoopversion</a>. Can only be 20, 23, 100, 200 or 210</p>
+
+<h3>20</h3>
+
+<p><equals arg1="${hadoopversion}" arg2="20" />
+<property name="hadoop.version" value="0.20.2-cdh3u1" />
+<property name="hbase94.version" value="0.90.3-cdh3u1" />
+<property name="zookeeper.version" value="3.3.3-cdh3u1" /></p>
+
+<h3>23</h3>
+
+<p><equals arg1="${hadoopversion}" arg2="23" />
+<property name="hadoop.version" value="0.23.1" />
+<property name="hbase94.version" value="0.92.0" />
+<property name="zookeeper.version" value="3.4.2" /></p>
+
+<h3>100</h3>
+
+<p><equals arg1="${hadoopversion}" arg2="100" />
+<property name="hadoop.version" value="1.0.0" />
+<property name="hbase94.version" value="0.92.0" />
+<property name="zookeeper.version" value="3.4.2" /></p>
+
+<h3>200</h3>
+
+<p><property name="hadoop.version" value="2.0.4-alpha" />
+<property name="hbase94.version" value="0.94.2" />
+<property name="zookeeper.version" value="3.4.2" /></p>
+
+<h3>210</h3>
+
+<p><property name="hadoop.version" value="2.1.0-beta" />
+<property name="hbase94.version" value="0.94.2" />
+<property name="zookeeper.version" value="3.4.2" /></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">hahakubile</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-17T01:11:17-05:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/hadoop/'>hadoop</a>, <a class='category' href='/blog/categories/sqoop/'>sqoop</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hahakubile.github.io/blog/2014/02/17/how-to-compile-sqoop-with-specified-hadoop-version/" data-via="" data-counturl="http://hahakubile.github.io/blog/2014/02/17/how-to-compile-sqoop-with-specified-hadoop-version/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/13/bulk-load-huge-data-from-mysql-to-hbase-using-sqoop/" title="Previous Post: Bulk Load Huge Data from Mysql to HBase using Sqoop">&laquo; Bulk Load Huge Data from Mysql to HBase using Sqoop</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mysql | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-13T03:47:55-05:00</updated>
+  <updated>2014-02-17T01:44:03-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bulk Load Huge Data From Mysql to HBase Using Sqoop]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/13/bulk-load-huge-data-from-mysql-to-hbase-using-sqoop/"/>
+    <updated>2014-02-13T21:44:36-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/13/bulk-load-huge-data-from-mysql-to-hbase-using-sqoop</id>
+    <content type="html"><![CDATA[<h2>MySQL->HBase:HBaseImportJob</h2>
+
+<h2>MySQL->HBase:HBaseBulkImportJob</h2>
+
+<h2>MySQL->HDFS(Avro files)&ndash;>HBase</h2>
+
+<p>Sqoop from MySQL into Avro files in HDFS, this will result in a bunch of avro files in your target directory. You can check that
+they&rsquo;re there with <code>hadoop fs -ls $TARGET_DIR</code>.</p>
+
+<p><code>sqoop import --connect jdbc:mysql://$MYSQL_SERVER/$DATABASE --driver com.mysql.jdbc.Driver --username $USER --password $PASSWORD --table $TABLE --target-dir $TARGET_DIR --as-avrodatafile</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Select All Columns Except Some in MySQL]]></title>

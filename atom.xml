@@ -4,7 +4,7 @@
   <title><![CDATA[hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-13T03:47:55-05:00</updated>
+  <updated>2014-02-17T01:44:03-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Compile Sqoop With Specified Hadoop Version]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/17/how-to-compile-sqoop-with-specified-hadoop-version/"/>
+    <updated>2014-02-17T01:11:17-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/17/how-to-compile-sqoop-with-specified-hadoop-version</id>
+    <content type="html"><![CDATA[<h2>command</h2>
+
+<ul>
+<li>To compile Sqoop, run <code>ant package</code>. There will be a fully self-hosted build provided in the <code>build/sqoop-(version)/</code> directory.</li>
+<li>You can build just the jar by running <code>ant jar</code>.</li>
+<li>You can specify the <code>hadoopversion</code>, <code>ant -Dhadoopversion=20 package</code></li>
+</ul>
+
+
+<h2>hadoopversion</h2>
+
+<p><a href="https://github.com/apache/sqoop/blob/trunk/build.xml">hadoopversion</a>. Can only be 20, 23, 100, 200 or 210</p>
+
+<h3>20</h3>
+
+<p><equals arg1="${hadoopversion}" arg2="20" />
+<property name="hadoop.version" value="0.20.2-cdh3u1" />
+<property name="hbase94.version" value="0.90.3-cdh3u1" />
+<property name="zookeeper.version" value="3.3.3-cdh3u1" /></p>
+
+<h3>23</h3>
+
+<p><equals arg1="${hadoopversion}" arg2="23" />
+<property name="hadoop.version" value="0.23.1" />
+<property name="hbase94.version" value="0.92.0" />
+<property name="zookeeper.version" value="3.4.2" /></p>
+
+<h3>100</h3>
+
+<p><equals arg1="${hadoopversion}" arg2="100" />
+<property name="hadoop.version" value="1.0.0" />
+<property name="hbase94.version" value="0.92.0" />
+<property name="zookeeper.version" value="3.4.2" /></p>
+
+<h3>200</h3>
+
+<p><property name="hadoop.version" value="2.0.4-alpha" />
+<property name="hbase94.version" value="0.94.2" />
+<property name="zookeeper.version" value="3.4.2" /></p>
+
+<h3>210</h3>
+
+<p><property name="hadoop.version" value="2.1.0-beta" />
+<property name="hbase94.version" value="0.94.2" />
+<property name="zookeeper.version" value="3.4.2" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bulk Load Huge Data From Mysql to HBase Using Sqoop]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/13/bulk-load-huge-data-from-mysql-to-hbase-using-sqoop/"/>
+    <updated>2014-02-13T21:44:36-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/13/bulk-load-huge-data-from-mysql-to-hbase-using-sqoop</id>
+    <content type="html"><![CDATA[<h2>MySQL->HBase:HBaseImportJob</h2>
+
+<h2>MySQL->HBase:HBaseBulkImportJob</h2>
+
+<h2>MySQL->HDFS(Avro files)&ndash;>HBase</h2>
+
+<p>Sqoop from MySQL into Avro files in HDFS, this will result in a bunch of avro files in your target directory. You can check that
+they&rsquo;re there with <code>hadoop fs -ls $TARGET_DIR</code>.</p>
+
+<p><code>sqoop import --connect jdbc:mysql://$MYSQL_SERVER/$DATABASE --driver com.mysql.jdbc.Driver --username $USER --password $PASSWORD --table $TABLE --target-dir $TARGET_DIR --as-avrodatafile</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Configuring Ulimit for HBase in Cloudera Cdh3u6]]></title>
