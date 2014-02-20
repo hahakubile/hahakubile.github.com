@@ -5,14 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>About IronSpread - hahakubile Blog</title>
+  <title>HBase Region Pre-Splitting - hahakubile Blog</title>
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="IronSpread: Scripting Excel with Python MIT的两名学生开发的Excel 2010 插件
-替代VBA
-允许用户在Excel中创建自动化的任务 相比之前使用python的插件完成excel清理，也许这会是个方便的选择。 @QucikStart
-">
+  <meta name="description" content="Background Hbase Version: 0.90.6 RegionSplitter Usage The org.apache.hadoop.hbase.util.RegionSplitter class provides several utilities to create a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hahakubile.github.io/blog/2012/06/11/about-ironspread">
+  <link rel="canonical" href="http://hahakubile.github.io/blog/2014/02/20/hbase-region-pre-splitting">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="hahakubile Blog" type="application/atom+xml">
@@ -71,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">About IronSpread</h1>
+      <h1 class="entry-title">HBase Region Pre-Splitting</h1>
     
     
       <p class="meta">
@@ -87,25 +84,89 @@
   
 
 
-<time datetime="2012-06-11T10:04:00-04:00" pubdate data-updated="true">Jun 11<span>th</span>, 2012</time>
+<time datetime="2014-02-20T02:52:37-05:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h3>IronSpread: Scripting Excel with Python</h3>
+<div class="entry-content"><h3>Background</h3>
+
+<p>Hbase Version: 0.90.6</p>
+
+<h3>RegionSplitter</h3>
+
+<h4>Usage</h4>
+
+<p>The <code>org.apache.hadoop.hbase.util.RegionSplitter</code> class provides several utilities to create a table with a specified number of pre-split regions.</p>
+
+<p>create a table named &lsquo;myTable&rsquo; with 60 pre-split regions containing 2 column families &lsquo;test&rsquo; &amp; &lsquo;rs&rsquo;</p>
+
+<p><code>bin/hbase org.apache.hadoop.hbase.util.RegionSplitter -c 60 -f test:rs myTable</code></p>
 
 <ul>
-<li>MIT的两名学生开发的Excel 2010 插件</li>
-<li>替代VBA</li>
-<li>允许用户在Excel中创建自动化的任务</li>
+<li>-c 60, specifies the requested number of regions as 60</li>
+<li>-f specifies the column families you want in the table, separated by &ldquo;:&rdquo;</li>
 </ul>
 
 
-<p>相比之前使用python的插件完成excel清理，也许这会是个方便的选择。</p>
+<h4>SplitAlgorithm</h4>
 
-<p><a href="http://www.ironspread.com/quickstart.html">@QucikStart</a></p>
+<p><code>MD5StringSplit</code> is the default RegionSplitter.SplitAlgorithm for creating pre-split tables. The format of MD5StringSplit is the ASCII representation of an MD5 checksum. Row are long values in the range &ldquo;00000000&rdquo; => &ldquo;7FFFFFFF&rdquo; and are left-padded with zeros to keep the same order lexographically as if they were binary.</p>
+
+<p><pre><code>
+public static class MD5StringSplit implements SplitAlgorithm {</p>
+
+<pre><code>final static String MAXMD5 = "7FFFFFFF";
+final static BigInteger MAXMD5_INT = new BigInteger(MAXMD5, 16);
+
+public byte[][] split(int n) {
+    BigInteger[] splits = new BigInteger[n - 1];
+    BigInteger sizeOfEachSplit = MAXMD5_INT.divide(BigInteger.valueOf(n));
+    for (int i = 1; i &lt; n; i++) {
+        // NOTE: this means the last region gets all the slop.
+        // This is not a big deal if we're assuming n &lt;&lt; MAXMD5
+        splits[i - 1] = sizeOfEachSplit.multiply(BigInteger.valueOf(i));
+    }
+    return convertToBytes(splits);
+}
+
+...
+</code></pre>
+
+<p>}
+</code><pre></p>
+
+<h4>Rowkey Design</h4>
+
+<p><pre><code></p>
+
+<pre><code>String id = "your_id";
+
+String md5 = org.apache.commons.codec.digest.DigestUtils.md5Hex(id);
+BigInteger x1 = new BigInteger(md5, 16);
+BigInteger x2 = new BigInteger("7FFFFFFF", 16);
+BigInteger x3 = x1.and(x2);
+
+String rowkey_hash = x3.toString(16);
+while(rowkey_hash.length() &lt; 8){
+    rowkey_hash = "0" + rowkey_hash;
+}
+
+String rowkey = rowkey_hash + "_" + id;
+System.out.println(rowkey);
+</code></pre>
+
+<p></code></pre></p>
+
+<h3>Scenario</h3>
+
+<p>Data Size: 4TB
+HBase Cluster: 10 nodes
+hbase.hregion.max.filesize: 2GB
+Cluster Region Count: 4TB/2GB = 2048
+Node Region Count: 2048/10 ~= 200</p>
 </div>
 
 
@@ -128,12 +189,12 @@
   
 
 
-<time datetime="2012-06-11T10:04:00-04:00" pubdate data-updated="true">Jun 11<span>th</span>, 2012</time>
+<time datetime="2014-02-20T02:52:37-05:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/excel/'>excel</a>, <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/tech/'>tech</a>
+    <a class='category' href='/blog/categories/hbase/'>hbase</a>, <a class='category' href='/blog/categories/pre-splitting/'>pre-splitting</a>
   
 </span>
 
@@ -142,7 +203,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hahakubile.github.io/blog/2012/06/11/about-ironspread/" data-via="" data-counturl="http://hahakubile.github.io/blog/2012/06/11/about-ironspread/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hahakubile.github.io/blog/2014/02/20/hbase-region-pre-splitting/" data-via="" data-counturl="http://hahakubile.github.io/blog/2014/02/20/hbase-region-pre-splitting/" >Tweet</a>
   
   
   
@@ -151,10 +212,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/06/08/xue-er-shi-xi-zhi-%2Cbu-yi-le-hu/" title="Previous Post: 学而时习之，不亦乐乎">&laquo; 学而时习之，不亦乐乎</a>
+        <a class="basic-alignment left" href="/blog/2014/02/17/how-to-compile-sqoop-with-specified-hadoop-version/" title="Previous Post: How to compile Sqoop with specified hadoop version">&laquo; How to compile Sqoop with specified hadoop version</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/06/11/problem-ssh-permissions-denied-this-private-key-are-too-open/" title="Next Post: Problem-SSH Permissions denied: This private key are too open">Problem-SSH Permissions denied: This private key are too open &raquo;</a>
       
     </p>
   </footer>

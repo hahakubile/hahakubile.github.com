@@ -4,7 +4,7 @@
   <title><![CDATA[hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-20T02:50:26-05:00</updated>
+  <updated>2014-02-20T03:30:02-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[HBase Region Pre-Splitting]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/20/hbase-region-pre-splitting/"/>
+    <updated>2014-02-20T02:52:37-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/20/hbase-region-pre-splitting</id>
+    <content type="html"><![CDATA[<h3>Background</h3>
+
+<p>Hbase Version: 0.90.6</p>
+
+<h3>RegionSplitter</h3>
+
+<h4>Usage</h4>
+
+<p>The <code>org.apache.hadoop.hbase.util.RegionSplitter</code> class provides several utilities to create a table with a specified number of pre-split regions.</p>
+
+<p>create a table named &lsquo;myTable&rsquo; with 60 pre-split regions containing 2 column families &lsquo;test&rsquo; &amp; &lsquo;rs&rsquo;</p>
+
+<p><code>bin/hbase org.apache.hadoop.hbase.util.RegionSplitter -c 60 -f test:rs myTable</code></p>
+
+<ul>
+<li>-c 60, specifies the requested number of regions as 60</li>
+<li>-f specifies the column families you want in the table, separated by &ldquo;:&rdquo;</li>
+</ul>
+
+
+<h4>SplitAlgorithm</h4>
+
+<p><code>MD5StringSplit</code> is the default RegionSplitter.SplitAlgorithm for creating pre-split tables. The format of MD5StringSplit is the ASCII representation of an MD5 checksum. Row are long values in the range &ldquo;00000000&rdquo; => &ldquo;7FFFFFFF&rdquo; and are left-padded with zeros to keep the same order lexographically as if they were binary.</p>
+
+<p><pre><code>
+public static class MD5StringSplit implements SplitAlgorithm {</p>
+
+<pre><code>final static String MAXMD5 = "7FFFFFFF";
+final static BigInteger MAXMD5_INT = new BigInteger(MAXMD5, 16);
+
+public byte[][] split(int n) {
+    BigInteger[] splits = new BigInteger[n - 1];
+    BigInteger sizeOfEachSplit = MAXMD5_INT.divide(BigInteger.valueOf(n));
+    for (int i = 1; i &lt; n; i++) {
+        // NOTE: this means the last region gets all the slop.
+        // This is not a big deal if we're assuming n &lt;&lt; MAXMD5
+        splits[i - 1] = sizeOfEachSplit.multiply(BigInteger.valueOf(i));
+    }
+    return convertToBytes(splits);
+}
+
+...
+</code></pre>
+
+<p>}
+</code><pre></p>
+
+<h4>Rowkey Design</h4>
+
+<p><pre><code></p>
+
+<pre><code>String id = "your_id";
+
+String md5 = org.apache.commons.codec.digest.DigestUtils.md5Hex(id);
+BigInteger x1 = new BigInteger(md5, 16);
+BigInteger x2 = new BigInteger("7FFFFFFF", 16);
+BigInteger x3 = x1.and(x2);
+
+String rowkey_hash = x3.toString(16);
+while(rowkey_hash.length() &lt; 8){
+    rowkey_hash = "0" + rowkey_hash;
+}
+
+String rowkey = rowkey_hash + "_" + id;
+System.out.println(rowkey);
+</code></pre>
+
+<p></code></pre></p>
+
+<h3>Scenario</h3>
+
+<p>Data Size: 4TB
+HBase Cluster: 10 nodes
+hbase.hregion.max.filesize: 2GB
+Cluster Region Count: 4TB/2GB = 2048
+Node Region Count: 2048/10 ~= 200</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Compile Sqoop With Specified Hadoop Version]]></title>
