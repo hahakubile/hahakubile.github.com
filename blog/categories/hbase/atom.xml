@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Hbase | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/hbase/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-20T03:30:02-05:00</updated>
+  <updated>2014-02-20T03:31:06-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -42,50 +42,47 @@
 
 <p><code>MD5StringSplit</code> is the default RegionSplitter.SplitAlgorithm for creating pre-split tables. The format of MD5StringSplit is the ASCII representation of an MD5 checksum. Row are long values in the range &ldquo;00000000&rdquo; => &ldquo;7FFFFFFF&rdquo; and are left-padded with zeros to keep the same order lexographically as if they were binary.</p>
 
-<p><pre><code>
-public static class MD5StringSplit implements SplitAlgorithm {</p>
+<pre><code>
+public static class MD5StringSplit implements SplitAlgorithm {
+    final static String MAXMD5 = "7FFFFFFF";
+    final static BigInteger MAXMD5_INT = new BigInteger(MAXMD5, 16);
 
-<pre><code>final static String MAXMD5 = "7FFFFFFF";
-final static BigInteger MAXMD5_INT = new BigInteger(MAXMD5, 16);
-
-public byte[][] split(int n) {
-    BigInteger[] splits = new BigInteger[n - 1];
-    BigInteger sizeOfEachSplit = MAXMD5_INT.divide(BigInteger.valueOf(n));
-    for (int i = 1; i &lt; n; i++) {
-        // NOTE: this means the last region gets all the slop.
-        // This is not a big deal if we're assuming n &lt;&lt; MAXMD5
-        splits[i - 1] = sizeOfEachSplit.multiply(BigInteger.valueOf(i));
+    public byte[][] split(int n) {
+        BigInteger[] splits = new BigInteger[n - 1];
+        BigInteger sizeOfEachSplit = MAXMD5_INT.divide(BigInteger.valueOf(n));
+        for (int i = 1; i < n; i++) {
+            // NOTE: this means the last region gets all the slop.
+            // This is not a big deal if we're assuming n << MAXMD5
+            splits[i - 1] = sizeOfEachSplit.multiply(BigInteger.valueOf(i));
+        }
+        return convertToBytes(splits);
     }
-    return convertToBytes(splits);
-}
 
-...
+    ...
+
+}
 </code></pre>
 
-<p>}
-</code><pre></p>
 
 <h4>Rowkey Design</h4>
 
-<p><pre><code></p>
+<pre><code>
+    String id = "your_id";
 
-<pre><code>String id = "your_id";
+    String md5 = org.apache.commons.codec.digest.DigestUtils.md5Hex(id);
+    BigInteger x1 = new BigInteger(md5, 16);
+    BigInteger x2 = new BigInteger("7FFFFFFF", 16);
+    BigInteger x3 = x1.and(x2);
+                      
+    String rowkey_hash = x3.toString(16);
+    while(rowkey_hash.length() < 8){
+        rowkey_hash = "0" + rowkey_hash;
+    }
 
-String md5 = org.apache.commons.codec.digest.DigestUtils.md5Hex(id);
-BigInteger x1 = new BigInteger(md5, 16);
-BigInteger x2 = new BigInteger("7FFFFFFF", 16);
-BigInteger x3 = x1.and(x2);
-
-String rowkey_hash = x3.toString(16);
-while(rowkey_hash.length() &lt; 8){
-    rowkey_hash = "0" + rowkey_hash;
-}
-
-String rowkey = rowkey_hash + "_" + id;
-System.out.println(rowkey);
+    String rowkey = rowkey_hash + "_" + id;
+    System.out.println(rowkey);
 </code></pre>
 
-<p></code></pre></p>
 
 <h3>Scenario</h3>
 
