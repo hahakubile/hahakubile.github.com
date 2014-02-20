@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Hadoop | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/hadoop/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-17T01:48:38-05:00</updated>
+  <updated>2014-02-20T02:47:13-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -34,48 +34,48 @@
 <h3>20</h3>
 
 <pre><code>
-<equals arg1="${hadoopversion}" arg2="20" />
-<property name="hadoop.version" value="0.20.2-cdh3u1" />
-<property name="hbase94.version" value="0.90.3-cdh3u1" />
-<property name="zookeeper.version" value="3.3.3-cdh3u1" />
+<equals arg1="${hadoopversion}" arg2="20" /\>
+\<property name="hadoop.version" value="0.20.2-cdh3u1" /\>
+\<property name="hbase94.version" value="0.90.3-cdh3u1" /\>
+\<property name="zookeeper.version" value="3.3.3-cdh3u1" /\>
 </code></pre>
 
 
 <h3>23</h3>
 
 <pre><code>
-<equals arg1="${hadoopversion}" arg2="23" />
-<property name="hadoop.version" value="0.23.1" />
-<property name="hbase94.version" value="0.92.0" />
-<property name="zookeeper.version" value="3.4.2" />
+<equals arg1="${hadoopversion}" arg2="23" /\>
+\<property name="hadoop.version" value="0.23.1" /\>
+\<property name="hbase94.version" value="0.92.0" /\>
+\<property name="zookeeper.version" value="3.4.2" /\>
 </code></pre>
 
 
 <h3>100</h3>
 
 <pre><code>
-<equals arg1="${hadoopversion}" arg2="100" />
-<property name="hadoop.version" value="1.0.0" />
-<property name="hbase94.version" value="0.92.0" />
-<property name="zookeeper.version" value="3.4.2" />
+<equals arg1="${hadoopversion}" arg2="100" /\>
+\<property name="hadoop.version" value="1.0.0" /\>
+\<property name="hbase94.version" value="0.92.0" /\>
+\<property name="zookeeper.version" value="3.4.2" /\>
 </code></pre>
 
 
 <h3>200</h3>
 
 <pre><code>
-<property name="hadoop.version" value="2.0.4-alpha" />
-<property name="hbase94.version" value="0.94.2" />
-<property name="zookeeper.version" value="3.4.2" />
+\<property name="hadoop.version" value="2.0.4-alpha" /\>
+\<property name="hbase94.version" value="0.94.2" /\>
+\<property name="zookeeper.version" value="3.4.2" /\>
 </code></pre>
 
 
 <h3>210</h3>
 
 <pre><code>
-<property name="hadoop.version" value="2.1.0-beta" />
-<property name="hbase94.version" value="0.94.2" />
-<property name="zookeeper.version" value="3.4.2" />
+\<property name="hadoop.version" value="2.1.0-beta" /\>
+\<property name="hbase94.version" value="0.94.2" /\>
+\<property name="zookeeper.version" value="3.4.2" /\>
 </code></pre>
 
 ]]></content>
