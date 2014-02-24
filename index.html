@@ -9,7 +9,8 @@
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="Background Hbase Version: 0.90.6 RegionSplitter Usage The org.apache.hadoop.hbase.util.RegionSplitter class provides several utilities to create a &hellip;">
+  <meta name="description" content="查看系统内安装的locale locale -a 查看当前系统语言环境 locale 安装语言包: zh_CN.utf8 cd /usr/share/locales
+./install-language-pack zh_CN 设为默认 sudo vim /etc/default/locale &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +66,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/24/ubuntu-config-locale-with-zh-cn-dot-utf-8/">Ubuntu Config Locale With zh_CN.UTF-8</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-24T01:06:04-05:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>查看系统内安装的locale</h3>
+
+<p><code>locale -a</code></p>
+
+<h3>查看当前系统语言环境</h3>
+
+<p><code>locale</code></p>
+
+<h3>安装语言包: zh_CN.utf8</h3>
+
+<p><code>cd /usr/share/locales</code>
+<code>./install-language-pack zh_CN</code></p>
+
+<h3>设为默认</h3>
+
+<p><code>sudo vim /etc/default/locale</code></p>
+
+<p>修改为:</p>
+
+<p><code>LANG="zh_CN.UTF-8"</code>
+<code>LANGUAGE="zh_CN:zh"</code></p>
+
+<h3>重启shell，OK</h3>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -791,83 +850,6 @@ std::cout &lt;&lt; j &lt;&lt; std::endl;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/16/select-all-columns-except-some-in-mysql/">Select All Columns Except Some in MySQL</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-16T13:58:00-04:00" pubdate data-updated="true">Jun 16<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>问题</h3>
-
-<p>如果一个表有多列，要想不查询指定列（其余列都要），该如何实现？</p>
-
-<p>在stackoverflow上有类似的问题，<a href="http://stackoverflow.com/questions/9122/select-all-columns-except-one-in-mysql/11060861#11060861">Select all columns except one in MySQL?</a></p>
-
-<h3>实现</h3>
-
-<pre><code>SET @database    = 'database_name';
-SET @tablename   = 'table_name';
-SET @cols2delete = 'col1,col2,col3';
-
-#If you do have a lots of cols, use this sql to change group_concat_max_len
-SET @@group_concat_max_len = 2048;  
-
-SET @sql = CONCAT(
-'SELECT ', 
-(
-    SELECT GROUP_CONCAT( IF(FIND_IN_SET(COLUMN_NAME, @cols2delete), NULL, COLUMN_NAME ) )
-    FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @tablename AND TABLE_SCHEMA = @database
-), 
-' FROM ',
-@tablename);
-
-SELECT @sql;
-
-PREPARE stmt1 FROM @sql;
-EXECUTE stmt1;
-</code></pre>
-
-<h3>说明</h3>
-
-<p>涉及到以下内容：</p>
-
-<ul>
-<li>从INFORMATION_SCHEMA.COLUMNS表中获取COLUMNS名称</li>
-<li>GROUP_CONCAT拼接在一起</li>
-<li>FIND_IN_SET判断是否在排除的列当中</li>
-<li>IF语句使用</li>
-<li>Mysql prepare&hellip;execute用法</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -883,6 +865,10 @@ EXECUTE stmt1;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/24/ubuntu-config-locale-with-zh-cn-dot-utf-8/">Ubuntu Config Locale With zh_CN.UTF-8</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/20/hbase-region-pre-splitting/">HBase Region Pre-Splitting</a>
       </li>
     
@@ -896,10 +882,6 @@ EXECUTE stmt1;
     
       <li class="post">
         <a href="/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6/">Configuring Ulimit for HBase in Cloudera Cdh3u6</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install/">Centos 5.8: python2.7.5 + scrapy0.16.4 Install</a>
       </li>
     
   </ul>

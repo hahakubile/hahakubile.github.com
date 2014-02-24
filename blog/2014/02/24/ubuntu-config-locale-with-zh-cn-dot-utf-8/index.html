@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Scrapy - hahakubile Blog</title>
+  <title>Ubuntu Config Locale With zh_CN.UTF-8 - hahakubile Blog</title>
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="Category: scrapy">
+  <meta name="description" content="查看系统内安装的locale locale -a 查看当前系统语言环境 locale 安装语言包: zh_CN.utf8 cd /usr/share/locales
+./install-language-pack zh_CN 设为默认 sudo vim /etc/default/locale &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hahakubile.github.ioblog/categories/scrapy">
+  <link rel="canonical" href="http://hahakubile.github.io/blog/2014/02/24/ubuntu-config-locale-with-zh-cn-dot-utf-8">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="hahakubile Blog" type="application/atom+xml">
@@ -64,35 +65,106 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Scrapy</h1>
+    
+      <h1 class="entry-title">Ubuntu Config Locale With zh_CN.UTF-8</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-24T01:06:04-05:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>查看系统内安装的locale</h3>
 
-  
-  <h2>2014</h2>
+<p><code>locale -a</code></p>
 
-<article>
-  
-<h1><a href="/blog/2014/02/06/centos-5-dot-8-python2-dot-7-5-plus-scrapy0-dot-16-dot-4-install/">Centos 5.8: python2.7.5 + scrapy0.16.4 Install</a></h1>
-<time datetime="2014-02-06T21:42:00-05:00" pubdate><span class='month'>Feb</span> <span class='day'>06</span> <span class='year'>2014</span></time>
+<h3>查看当前系统语言环境</h3>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/scrapy/'>scrapy</a></span>
-</footer>
+<p><code>locale</code></p>
 
+<h3>安装语言包: zh_CN.utf8</h3>
 
-</article>
+<p><code>cd /usr/share/locales</code>
+<code>./install-language-pack zh_CN</code></p>
 
+<h3>设为默认</h3>
+
+<p><code>sudo vim /etc/default/locale</code></p>
+
+<p>修改为:</p>
+
+<p><code>LANG="zh_CN.UTF-8"</code>
+<code>LANGUAGE="zh_CN:zh"</code></p>
+
+<h3>重启shell，OK</h3>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">hahakubile</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-24T01:06:04-05:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/locale/'>locale</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hahakubile.github.io/blog/2014/02/24/ubuntu-config-locale-with-zh-cn-dot-utf-8/" data-via="" data-counturl="http://hahakubile.github.io/blog/2014/02/24/ubuntu-config-locale-with-zh-cn-dot-utf-8/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/20/hbase-region-pre-splitting/" title="Previous Post: HBase Region Pre-Splitting">&laquo; HBase Region Pre-Splitting</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

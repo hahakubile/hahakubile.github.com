@@ -4,7 +4,7 @@
   <title><![CDATA[hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-20T03:32:08-05:00</updated>
+  <updated>2014-02-24T01:12:40-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu Config Locale With zh_CN.UTF-8]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/24/ubuntu-config-locale-with-zh-cn-dot-utf-8/"/>
+    <updated>2014-02-24T01:06:04-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/24/ubuntu-config-locale-with-zh-cn-dot-utf-8</id>
+    <content type="html"><![CDATA[<h3>查看系统内安装的locale</h3>
+
+<p><code>locale -a</code></p>
+
+<h3>查看当前系统语言环境</h3>
+
+<p><code>locale</code></p>
+
+<h3>安装语言包: zh_CN.utf8</h3>
+
+<p><code>cd /usr/share/locales</code>
+<code>./install-language-pack zh_CN</code></p>
+
+<h3>设为默认</h3>
+
+<p><code>sudo vim /etc/default/locale</code></p>
+
+<p>修改为:</p>
+
+<p><code>LANG="zh_CN.UTF-8"</code>
+<code>LANGUAGE="zh_CN:zh"</code></p>
+
+<h3>重启shell，OK</h3>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[HBase Region Pre-Splitting]]></title>
