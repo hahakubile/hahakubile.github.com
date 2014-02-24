@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-24T01:12:40-05:00</updated>
+  <updated>2014-02-24T01:13:52-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -28,8 +28,9 @@
 
 <h3>安装语言包: zh_CN.utf8</h3>
 
-<p><code>cd /usr/share/locales</code>
-<code>./install-language-pack zh_CN</code></p>
+<p><code>cd /usr/share/locales</code></p>
+
+<p><code>./install-language-pack zh_CN</code></p>
 
 <h3>设为默认</h3>
 
@@ -37,8 +38,9 @@
 
 <p>修改为:</p>
 
-<p><code>LANG="zh_CN.UTF-8"</code>
-<code>LANGUAGE="zh_CN:zh"</code></p>
+<p><code>LANG="zh_CN.UTF-8"</code></p>
+
+<p><code>LANGUAGE="zh_CN:zh"</code></p>
 
 <h3>重启shell，OK</h3>
 ]]></content>
