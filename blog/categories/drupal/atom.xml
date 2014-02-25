@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Drupal | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/drupal/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-25T04:12:51-05:00</updated>
+  <updated>2014-02-25T04:15:15-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -38,16 +38,25 @@
 
 <h3><a href="http://nielsdefeyter.nl/archive/201312/analyses-drupal-commerce-multiseller-implementations">Drupal Commerce Multiseller</a></h3>
 
-<blockquote><p>What is eCommerce Multiseller?
-* One Website, multiple sellers a.k.a. stores
-* Think Etsy, Amazon Marketplace, Ebay
-* Unified Customer Experience
-* Can buy at multiple stores at once
-* Stores have their own dashboard for managing products, orders, promotions, etc.</p></blockquote>
+<blockquote><p>What is eCommerce Multiseller?</p>
+
+<p>  One Website, multiple sellers a.k.a. stores</p>
+
+<p>  Think Etsy, Amazon Marketplace, Ebay</p>
+
+<p>  Unified Customer Experience</p>
+
+<p>  Can buy at multiple stores at once</p>
+
+<p>  Stores have their own dashboard for managing products, orders, promotions, etc.</p></blockquote>
 
 <p>Third-party Modules:
-1. <a href="https://drupal.org/sandbox/maciej.zgadzaj/1950386">Commerce Store</a>
-2. <a href="https://drupal.org/project/commerce_marketplace">Commerce Marketplace</a></p>
+1. <a href="https://drupal.org/sandbox/maciej.zgadzaj/1950386">Commerce Store</a></p>
+
+<ol>
+<li><a href="https://drupal.org/project/commerce_marketplace">Commerce Marketplace</a></li>
+</ol>
+
 ]]></content>
   </entry>
   
