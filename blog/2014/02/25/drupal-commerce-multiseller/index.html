@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Install Commerce Kickstart: Part 2 - hahakubile Blog</title>
+  <title>Drupal Commerce Multiseller - hahakubile Blog</title>
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="PHP Environment see here: http://www.drupalcommerce.org/questions/8356/ajax-http-error-occurred-http-result-code-500 vim /etc/php5/apache2/php.ini &hellip;">
+  <meta name="description" content="Sites such as eBay, Etsy and AliBaba have enormous reach and support with 100,000&rsquo;s of sellers on just one site. However, multi-vendor sites &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hahakubile.github.io/blog/2014/02/25/install-commerce-kickstart-part-2">
+  <link rel="canonical" href="http://hahakubile.github.io/blog/2014/02/25/drupal-commerce-multiseller">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="hahakubile Blog" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Install Commerce Kickstart: Part 2</h1>
+      <h1 class="entry-title">Drupal Commerce Multiseller</h1>
     
     
       <p class="meta">
@@ -84,49 +84,43 @@
   
 
 
-<time datetime="2014-02-25T01:04:39-05:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
+<time datetime="2014-02-25T03:57:03-05:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h3>PHP Environment</h3>
+<div class="entry-content"><blockquote><p>Sites such as eBay, Etsy and AliBaba have enormous reach and support with 100,000&rsquo;s of sellers on just one site.</p>
 
-<p>see here: <a href="http://www.drupalcommerce.org/questions/8356/ajax-http-error-occurred-http-result-code-500">http://www.drupalcommerce.org/questions/8356/ajax-http-error-occurred-http-result-code-500</a></p>
+<p>However, multi-vendor sites are also really difficult to build and maintain. E-commerce itself is difficult enough, but when you multiply the number of transactions and vendors, you multiply all of the potential issues.</p>
 
-<pre><code>vim /etc/php5/apache2/php.ini 
+<p>Still, we often get asked how to set up a multi-vendor site. For our members and our readers, <a href="http://www.ostraining.com/blog/general/multi-vendor-commerce/">here</a> are 9 options for building a multi-vendor site with open source software.</p></blockquote>
 
-max_execution_time = -1 (default is 60 seconds, -1 is unlimited)
-max_input_time = -1
-max_input_nesting_level = 300
-memory_limit = 256M
-</code></pre>
+<h3><a href="http://drupal.org/project/commerce">Drupal with Drupal Commerce</a></h3>
 
-<h3>Download &amp; Extract</h3>
+<ul>
+<li>Price: Free.</li>
+<li>Description: Drupal Commerce is a powerful shopping cart system for Drupal. Drupal 7 and Drupal Commerce are free to companies that want to deploy it themselves.</li>
+</ul>
 
-<p>You can download the lastest Commerce Kickstart here: <a href="https://drupal.org/project/commerce_kickstart">https://drupal.org/project/commerce_kickstart</a></p>
 
-<pre><code>cd /var/www
-wget http://ftp.drupal.org/files/projects/commerce_kickstart-7.x-2.12-core.tar.gz
-tar xzf commerce_kickstart-7.x-2.12-core.tar.gz
-mv commerce_kickstart-7.x-2.12/* .
-rm -rf commerce_kickstart-7.x-2.12 commerce_kickstart-7.x-2.12-core.tar.gz
-</code></pre>
+<h3><a href="https://drupal.org/project/commerce_kickstart">Commerce Kickstart</a></h3>
 
-<h3>Requirements</h3>
+<p>Commerce Kickstart is the quickest way to get up and running with Drupal Commerce. It includes the latest versions of Drupal core, Drupal Commerce, and the other modules it depends on.</p>
 
-<pre><code>cd /var/www
-mkdir -p sites/default/files
-cp sites/default/default.settings.php sites/default/settings.php
-chown -R www-data:www-data sites
-</code></pre>
+<h3><a href="http://nielsdefeyter.nl/archive/201312/analyses-drupal-commerce-multiseller-implementations">Drupal Commerce Multiseller</a></h3>
 
-<h3>Install guide</h3>
+<blockquote><p>What is eCommerce Multiseller?
+* One Website, multiple sellers a.k.a. stores
+* Think Etsy, Amazon Marketplace, Ebay
+* Unified Customer Experience
+* Can buy at multiple stores at once
+* Stores have their own dashboard for managing products, orders, promotions, etc.</p></blockquote>
 
-<p>Go to <a href="http://your-server-ip/">http://your-server-ip/</a> , you will see the WELCOME SCREEN.</p>
-
-<p>If you see the welcome message, Congrats! Follow the guide.</p>
+<p>Third-party Modules:
+1. <a href="https://drupal.org/sandbox/maciej.zgadzaj/1950386">Commerce Store</a>
+2. <a href="https://drupal.org/project/commerce_marketplace">Commerce Marketplace</a></p>
 </div>
 
 
@@ -149,12 +143,12 @@ chown -R www-data:www-data sites
   
 
 
-<time datetime="2014-02-25T01:04:39-05:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
+<time datetime="2014-02-25T03:57:03-05:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/commerce-kickstart/'>commerce kickstart</a>, <a class='category' href='/blog/categories/drupal/'>drupal</a>
+    <a class='category' href='/blog/categories/commerce/'>commerce</a>, <a class='category' href='/blog/categories/drupal/'>drupal</a>
   
 </span>
 
@@ -163,7 +157,7 @@ chown -R www-data:www-data sites
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hahakubile.github.io/blog/2014/02/25/install-commerce-kickstart-part-2/" data-via="" data-counturl="http://hahakubile.github.io/blog/2014/02/25/install-commerce-kickstart-part-2/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://hahakubile.github.io/blog/2014/02/25/drupal-commerce-multiseller/" data-via="" data-counturl="http://hahakubile.github.io/blog/2014/02/25/drupal-commerce-multiseller/" >Tweet</a>
   
   
   
@@ -172,10 +166,8 @@ chown -R www-data:www-data sites
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/02/24/how-to-set-the-timezone-on-ubuntu/" title="Previous Post: How to set the timezone on Ubuntu">&laquo; How to set the timezone on Ubuntu</a>
+        <a class="basic-alignment left" href="/blog/2014/02/25/install-commerce-kickstart-part-2/" title="Previous Post: Install Commerce Kickstart: Part 2">&laquo; Install Commerce Kickstart: Part 2</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/02/25/drupal-commerce-multiseller/" title="Next Post: Drupal Commerce Multiseller">Drupal Commerce Multiseller &raquo;</a>
       
     </p>
   </footer>

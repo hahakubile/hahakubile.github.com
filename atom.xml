@@ -4,7 +4,7 @@
   <title><![CDATA[hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-25T01:52:02-05:00</updated>
+  <updated>2014-02-25T04:12:51-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Drupal Commerce Multiseller]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/25/drupal-commerce-multiseller/"/>
+    <updated>2014-02-25T03:57:03-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/25/drupal-commerce-multiseller</id>
+    <content type="html"><![CDATA[<blockquote><p>Sites such as eBay, Etsy and AliBaba have enormous reach and support with 100,000&rsquo;s of sellers on just one site.</p>
+
+<p>However, multi-vendor sites are also really difficult to build and maintain. E-commerce itself is difficult enough, but when you multiply the number of transactions and vendors, you multiply all of the potential issues.</p>
+
+<p>Still, we often get asked how to set up a multi-vendor site. For our members and our readers, <a href="http://www.ostraining.com/blog/general/multi-vendor-commerce/">here</a> are 9 options for building a multi-vendor site with open source software.</p></blockquote>
+
+<h3><a href="http://drupal.org/project/commerce">Drupal with Drupal Commerce</a></h3>
+
+<ul>
+<li>Price: Free.</li>
+<li>Description: Drupal Commerce is a powerful shopping cart system for Drupal. Drupal 7 and Drupal Commerce are free to companies that want to deploy it themselves.</li>
+</ul>
+
+
+<h3><a href="https://drupal.org/project/commerce_kickstart">Commerce Kickstart</a></h3>
+
+<p>Commerce Kickstart is the quickest way to get up and running with Drupal Commerce. It includes the latest versions of Drupal core, Drupal Commerce, and the other modules it depends on.</p>
+
+<h3><a href="http://nielsdefeyter.nl/archive/201312/analyses-drupal-commerce-multiseller-implementations">Drupal Commerce Multiseller</a></h3>
+
+<blockquote><p>What is eCommerce Multiseller?
+* One Website, multiple sellers a.k.a. stores
+* Think Etsy, Amazon Marketplace, Ebay
+* Unified Customer Experience
+* Can buy at multiple stores at once
+* Stores have their own dashboard for managing products, orders, promotions, etc.</p></blockquote>
+
+<p>Third-party Modules:
+1. <a href="https://drupal.org/sandbox/maciej.zgadzaj/1950386">Commerce Store</a>
+2. <a href="https://drupal.org/project/commerce_marketplace">Commerce Marketplace</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install Commerce Kickstart: Part 2]]></title>
