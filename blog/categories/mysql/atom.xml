@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Mysql | hahakubile Blog]]></title>
+  <title><![CDATA[Category: MySQL | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-24T01:13:52-05:00</updated>
+  <updated>2014-02-25T00:47:45-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -14,70 +14,47 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Bulk Load Huge Data From Mysql to HBase Using Sqoop]]></title>
-    <link href="http://hahakubile.github.io/blog/2014/02/13/bulk-load-huge-data-from-mysql-to-hbase-using-sqoop/"/>
-    <updated>2014-02-13T21:44:36-05:00</updated>
-    <id>http://hahakubile.github.io/blog/2014/02/13/bulk-load-huge-data-from-mysql-to-hbase-using-sqoop</id>
-    <content type="html"><![CDATA[<h2>MySQL->HBase:HBaseImportJob</h2>
+    <title type="html"><![CDATA[Install Commerce Kickstart: Part 1 - Requirements Apache]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/24/install-commerce-kickstart-part-1-requirements-apache/"/>
+    <updated>2014-02-24T01:32:31-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/24/install-commerce-kickstart-part-1-requirements-apache</id>
+    <content type="html"><![CDATA[<h3>Install Apache</h3>
 
-<h2>MySQL->HBase:HBaseBulkImportJob</h2>
+<p><code>sudo apt-get update</code></p>
 
-<h2>MySQL->HDFS(Avro files)&ndash;>HBase</h2>
+<p><code>sudo apt-get install apache2</code></p>
 
-<p>Sqoop from MySQL into Avro files in HDFS, this will result in a bunch of avro files in your target directory. You can check that
-they&rsquo;re there with <code>hadoop fs -ls $TARGET_DIR</code>.</p>
+<p><code>vim /etc/apache2/httpd.conf</code>
+Add this line: <code>ServerName localhost</code></p>
 
-<p><code>sqoop import --connect jdbc:mysql://$MYSQL_SERVER/$DATABASE --driver com.mysql.jdbc.Driver --username $USER --password $PASSWORD --table $TABLE --target-dir $TARGET_DIR --as-avrodatafile</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Select All Columns Except Some in MySQL]]></title>
-    <link href="http://hahakubile.github.io/blog/2012/06/16/select-all-columns-except-some-in-mysql/"/>
-    <updated>2012-06-16T13:58:00-04:00</updated>
-    <id>http://hahakubile.github.io/blog/2012/06/16/select-all-columns-except-some-in-mysql</id>
-    <content type="html"><![CDATA[<h3>问题</h3>
+<p>To check if Apache is installed, direct your browser to your server&rsquo;s IP address (eg. <a href="http://12.34.56.789">http://12.34.56.789</a>).
+The page should display the words &ldquo;It works!&rdquo;</p>
 
-<p>如果一个表有多列，要想不查询指定列（其余列都要），该如何实现？</p>
+<h3>Install MySQL</h3>
 
-<p>在stackoverflow上有类似的问题，<a href="http://stackoverflow.com/questions/9122/select-all-columns-except-one-in-mysql/11060861#11060861">Select all columns except one in MySQL?</a></p>
+<p><code>sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql</code></p>
 
-<h3>实现</h3>
+<p>During the installation, MySQL will ask you to set a root password.</p>
 
-<pre><code>SET @database    = 'database_name';
-SET @tablename   = 'table_name';
-SET @cols2delete = 'col1,col2,col3';
+<p>Once you have installed MySQL, we should activate it with this command:
+<code>sudo mysql_install_db</code></p>
 
-#If you do have a lots of cols, use this sql to change group_concat_max_len
-SET @@group_concat_max_len = 2048;  
+<p>Finish up by running the MySQL set up script:</p>
 
-SET @sql = CONCAT(
-'SELECT ', 
-(
-    SELECT GROUP_CONCAT( IF(FIND_IN_SET(COLUMN_NAME, @cols2delete), NULL, COLUMN_NAME ) )
-    FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @tablename AND TABLE_SCHEMA = @database
-), 
-' FROM ',
-@tablename);
+<p><code>sudo /usr/bin/mysql_secure_installation</code></p>
 
-SELECT @sql;
+<p>It&rsquo;s easiest just to say Yes to all the options. At the end, MySQL will reload and implement the new changes.</p>
 
-PREPARE stmt1 FROM @sql;
-EXECUTE stmt1;
-</code></pre>
+<p>Create a new database for your site.
+<code>mysqladmin -u root -p create commerce</code></p>
 
-<h3>说明</h3>
+<h3>Install PHP</h3>
 
-<p>涉及到以下内容：</p>
+<p><code>sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt</code></p>
 
-<ul>
-<li>从INFORMATION_SCHEMA.COLUMNS表中获取COLUMNS名称</li>
-<li>GROUP_CONCAT拼接在一起</li>
-<li>FIND_IN_SET判断是否在排除的列当中</li>
-<li>IF语句使用</li>
-<li>Mysql prepare&hellip;execute用法</li>
-</ul>
+<p><code>sudo apt-get install php5-gd</code></p>
 
+<p><code>sudo apt-get install php5-curl</code></p>
 ]]></content>
   </entry>
   

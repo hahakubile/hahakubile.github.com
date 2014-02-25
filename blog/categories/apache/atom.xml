@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Apache | hahakubile Blog]]></title>
+  <link href="http://hahakubile.github.io/blog/categories/apache/atom.xml" rel="self"/>
+  <link href="http://hahakubile.github.io/"/>
+  <updated>2014-02-25T00:47:45-05:00</updated>
+  <id>http://hahakubile.github.io/</id>
+  <author>
+    <name><![CDATA[hahakubile]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Install Commerce Kickstart: Part 1 - Requirements Apache]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/24/install-commerce-kickstart-part-1-requirements-apache/"/>
+    <updated>2014-02-24T01:32:31-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/24/install-commerce-kickstart-part-1-requirements-apache</id>
+    <content type="html"><![CDATA[<h3>Install Apache</h3>
+
+<p><code>sudo apt-get update</code></p>
+
+<p><code>sudo apt-get install apache2</code></p>
+
+<p><code>vim /etc/apache2/httpd.conf</code>
+Add this line: <code>ServerName localhost</code></p>
+
+<p>To check if Apache is installed, direct your browser to your server&rsquo;s IP address (eg. <a href="http://12.34.56.789">http://12.34.56.789</a>).
+The page should display the words &ldquo;It works!&rdquo;</p>
+
+<h3>Install MySQL</h3>
+
+<p><code>sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql</code></p>
+
+<p>During the installation, MySQL will ask you to set a root password.</p>
+
+<p>Once you have installed MySQL, we should activate it with this command:
+<code>sudo mysql_install_db</code></p>
+
+<p>Finish up by running the MySQL set up script:</p>
+
+<p><code>sudo /usr/bin/mysql_secure_installation</code></p>
+
+<p>It&rsquo;s easiest just to say Yes to all the options. At the end, MySQL will reload and implement the new changes.</p>
+
+<p>Create a new database for your site.
+<code>mysqladmin -u root -p create commerce</code></p>
+
+<h3>Install PHP</h3>
+
+<p><code>sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt</code></p>
+
+<p><code>sudo apt-get install php5-gd</code></p>
+
+<p><code>sudo apt-get install php5-curl</code></p>
+]]></content>
+  </entry>
+  
+</feed>

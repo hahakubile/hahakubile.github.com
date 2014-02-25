@@ -9,8 +9,7 @@
   <meta name="author" content="hahakubile">
 
   
-  <meta name="description" content="问题 如果一个表有多列，要想不查询指定列（其余列都要），该如何实现？ 在stackoverflow上有类似的问题，Select all columns except one in MySQL? 实现 SET @database = 'database_name';
-SET @tablename &hellip;">
+  <meta name="description" content="static_cast static_cast&lt;type&gt; (object); The static_cast operator can be used for operations such as: Converting a pointer of a base class to a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,123 @@ SET @tablename &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/25/about-static-cast/">About Static_cast</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-25T14:06:00-04:00" pubdate data-updated="true">Jun 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>static_cast</h3>
+
+<pre><code>static_cast&lt;type&gt; (object);
+</code></pre>
+
+<p>The static_cast operator can be used for operations such as:</p>
+
+<ul>
+<li>Converting a pointer of a base class to a pointer of a derived class,</li>
+<li>Convert numeric data types such as enums to ints or ints to floats.</li>
+</ul>
+
+
+<h3>示例</h3>
+
+<pre><code>int score = 1340;
+
+float scale = static_cast&lt;float&gt;(score) / MAX_SCORE + 1;
+
+// 如果这样呢？会有什么不同
+float scale = score / MAX_SCORE + 1;
+</code></pre>
+
+<p>需要注意的是，在基础类型转换时，并非进行四舍五入，而是直接舍去小数部分！</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/25/avoid-assigning-negative-numbers-to-unsigned-short/">Avoid Assigning Negative Numbers to Unsigned Int|short</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-25T11:57:00-04:00" pubdate data-updated="true">Jun 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>问题</h3>
+
+<pre><code>// 定义了一个int变量i，i存在为负数的情况
+int i = -1; 
+// 又定义了一个unsigned short or int的变量j
+unsigned short j;
+// 如果把i的值赋给j
+j = i; 
+
+// 会发生什么？j为65535
+std::cout &lt;&lt; j &lt;&lt; std::endl;
+</code></pre>
+
+<h3>结论</h3>
+
+<p>这是一个简单的赋值，但由于前后未注意，导致这种bug发生，试想如果后面使用下面语句进行判断的话：</p>
+
+<pre><code>if(j &gt; 0) {
+  // 这里，j本应该是-1，但由于65535&gt;0，导致错误
+}
+</code></pre>
+
+<p>看到一句很有意思的话，You&rsquo;re lying to the compiler.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -375,6 +491,14 @@ chmod 700 id_rsa
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/24/how-to-set-the-timezone-on-ubuntu/">How to Set the Timezone on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/24/install-commerce-kickstart-part-1-requirements-apache/">Install Commerce Kickstart: Part 1 - Requirements Apache</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/24/ubuntu-config-locale-with-zh-cn-dot-utf-8/">Ubuntu Config Locale With zh_CN.UTF-8</a>
       </li>
     
@@ -384,14 +508,6 @@ chmod 700 id_rsa
     
       <li class="post">
         <a href="/blog/2014/02/17/how-to-compile-sqoop-with-specified-hadoop-version/">How to Compile Sqoop With Specified Hadoop Version</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/bulk-load-huge-data-from-mysql-to-hbase-using-sqoop/">Bulk Load Huge Data From Mysql to HBase Using Sqoop</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/configuring-ulimit-for-hbase-in-cloudera-cdh3u6/">Configuring Ulimit for HBase in Cloudera Cdh3u6</a>
       </li>
     
   </ul>
