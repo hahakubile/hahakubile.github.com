@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Timezone | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/timezone/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-25T00:47:45-05:00</updated>
+  <updated>2014-02-25T00:51:25-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -20,16 +20,21 @@
     <id>http://hahakubile.github.io/blog/2014/02/24/how-to-set-the-timezone-on-ubuntu</id>
     <content type="html"><![CDATA[<p>You can check your current timezone by just running</p>
 
-<p>$ date</p>
+<pre><code>$ date
+</code></pre>
 
 <p>Or checking the timezone file at</p>
 
-<p>$ more /etc/timezone</p>
+<pre><code>$ more /etc/timezone
+America/New_York
+</code></pre>
 
 <p>So to change it just run</p>
 
-<p>$ sudo dpkg-reconfigure tzdata
-And follow on screen instructions.  Easy.</p>
+<pre><code>$ sudo dpkg-reconfigure tzdata
+</code></pre>
+
+<p>And follow on screen instructions.  Easy.</p>
 ]]></content>
   </entry>
   
