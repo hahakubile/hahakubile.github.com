@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Drupal | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/drupal/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-25T00:51:25-05:00</updated>
+  <updated>2014-02-25T01:23:12-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install Commerce Kickstart: Part 2]]></title>
+    <link href="http://hahakubile.github.io/blog/2014/02/25/install-commerce-kickstart-part-2/"/>
+    <updated>2014-02-25T01:04:39-05:00</updated>
+    <id>http://hahakubile.github.io/blog/2014/02/25/install-commerce-kickstart-part-2</id>
+    <content type="html"><![CDATA[<h3>PHP Environment</h3>
+
+<p>see here: <a href="http://www.drupalcommerce.org/questions/8356/ajax-http-error-occurred-http-result-code-500">http://www.drupalcommerce.org/questions/8356/ajax-http-error-occurred-http-result-code-500</a></p>
+
+<pre><code>vim /etc/php5/apache2/php.ini 
+
+max_execution_time = -1 (default is 60 seconds, -1 is unlimited)
+max_input_time = -1
+max_input_nesting_level = 300
+memory_limit = 256M
+</code></pre>
+
+<h3>Download &amp; Extract</h3>
+
+<p>You can download the lastest Commerce Kickstart here: <a href="https://drupal.org/project/commerce_kickstart">https://drupal.org/project/commerce_kickstart</a></p>
+
+<pre><code>cd /var/www
+wget http://ftp.drupal.org/files/projects/commerce_kickstart-7.x-2.12-core.tar.gz
+tar xzf commerce_kickstart-7.x-2.12-core.tar.gz
+mv commerce_kickstart-7.x-2.12/* .
+rm -rf commerce_kickstart-7.x-2.12 commerce_kickstart-7.x-2.12-core.tar.gz
+</code></pre>
+
+<h3>Requirements</h3>
+
+<pre><code>cd /var/www
+mkdir -p sites/default/files
+cp sites/default/default.settings.php sites/default/settings.php
+chown -R www-data:www-data sites
+</code></pre>
+
+<h3>Install guide</h3>
+
+<p>Go to <a href="http://your-server-ip/,">http://your-server-ip/,</a> you will see the WELCOME SCREEN
+If you see the welcome message, then you have successfully copied your files into the right folder. Congrats!
+Follow the guide.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install Commerce Kickstart: Part 1 - Requirements Apache]]></title>
