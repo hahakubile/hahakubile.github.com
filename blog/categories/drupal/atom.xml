@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Drupal | hahakubile Blog]]></title>
   <link href="http://hahakubile.github.io/blog/categories/drupal/atom.xml" rel="self"/>
   <link href="http://hahakubile.github.io/"/>
-  <updated>2014-02-25T01:23:12-05:00</updated>
+  <updated>2014-02-25T01:24:50-05:00</updated>
   <id>http://hahakubile.github.io/</id>
   <author>
     <name><![CDATA[hahakubile]]></name>
@@ -51,9 +51,9 @@ chown -R www-data:www-data sites
 
 <h3>Install guide</h3>
 
-<p>Go to <a href="http://your-server-ip/,">http://your-server-ip/,</a> you will see the WELCOME SCREEN
-If you see the welcome message, then you have successfully copied your files into the right folder. Congrats!
-Follow the guide.</p>
+<p>Go to <a href="http://your-server-ip/">http://your-server-ip/</a> , you will see the WELCOME SCREEN.</p>
+
+<p>If you see the welcome message, Congrats! Follow the guide.</p>
 ]]></content>
   </entry>
   
